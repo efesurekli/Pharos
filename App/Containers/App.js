@@ -1,29 +1,32 @@
-import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
 
-import RootContainer from './RootContainer'
-import rootReducer from '../Redux'
+import RootContainer from './RootContainer';
+import rootReducer from '../Redux/index.js';
 // import createStore from '../Redux';
 // import applyConfigSettings from '../Config';
 
-const loggerMiddleware = createLogger()
+const loggerMiddleware = createLogger();
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  loggerMiddleware
-)(createStore)
+  loggerMiddleware,
+)(createStore);
 
-const configureStore = function (initialState: Object = {}): Function {
-  return createStoreWithMiddleware(rootReducer, initialState)
-}
+// const configureStore = function (initialState: Object = {}): Function {
+//   return createStoreWithMiddleware(rootReducer, initialState)
+// }
+
+const configureStore = (initialState = {}) =>
+  createStoreWithMiddleware(rootReducer, initialState);
 
 // Apply config overrides
 // applyConfigSettings();
 // create our store
-const store = configureStore()
+const store = configureStore();
 
 /**
  * Provides an entry point into our application.  Both index.ios.js and index.android.js
@@ -44,4 +47,4 @@ class App extends Component {
   };
 };
 
-export default App
+export default App;
