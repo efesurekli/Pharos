@@ -17,7 +17,7 @@ class ReportEventForms extends React.Component {
   render() {
     return (
       <Container>
-        <Content style={{padding:20}}>
+        <Content style={{ padding:20 }}>
           <Text
             style={{alignSelf: 'center', marginTop:200, marginBottom: 20}}
             >
