@@ -8,7 +8,9 @@ const defaultState = {
   newEvent: {
     category: 'waitTime',
     description: 'Long wait time',
-    event: 'evantA'
+    event: 'evantA',
+    location: { latitude: 37.78500, longitude: -122.41059 },
+    categoryId: 3,
   },
   events: [
     {
@@ -79,7 +81,12 @@ const rootReducer = (state = initialState, action) => {
     case 'REPORT_EVENT':
       return {
         ...state,
-        newEvent: action.newEvent,
+        newNotification: action.newNotification,
+      };
+    case 'PARTIAL_REPORT':
+      return {
+        ...state,
+        newNotification: action.newNotification,
       };
     case 'UPDATE_POSITION':
       return {

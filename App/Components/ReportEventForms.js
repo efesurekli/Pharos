@@ -35,7 +35,8 @@ class ReportEventForms extends React.Component {
           <View style={ {flexDirection: 'row', alignSelf: 'center'} }>
           <Button
             primary
-            onPress={() => this.props.handleSubmit(this.props.newEvent, this.state.description)}
+            onPress={() =>
+              this.props.handleSubmit(this.props.newEvent, this.state.description, this.props.eventLocation)}
             style={{
               alignSelf: 'flex-start',
               margin: 20

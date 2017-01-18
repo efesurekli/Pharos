@@ -10,20 +10,20 @@ import { Actions as NavigationActions } from 'react-native-router-flux'
 const mapStateToProps = (state) => {
   return {
     newEvent: state.newNotification,
+    eventLocation: state.region,
   };
 };
 
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit: (newEvent, description) => {
-    let updatedEvent = newEvent;
-    updatedEvent.description = description;
+  handleSubmit: (newEvent, description, location) => {
+    const updatedEvent = { ...newEvent, description, location };
     dispatch(reportEvent(updatedEvent));
     NavigationActions.mapScreen();
   },
   redirectToMapview: () => {
     NavigationActions.mapScreen();
-  }
+  },
 });
 
 

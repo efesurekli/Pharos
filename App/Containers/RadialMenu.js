@@ -15,6 +15,17 @@ class RadialMenuComponent extends React.Component {
   }
 
   handleSelect(events, description, key) {
+
+    // helper function to get category id
+    const getCategoryId = (categoryName) => {
+      for(let prop in EventCategories) {
+        if (EventCategories[prop].key === categoryName) {
+          return parseInt(prop, 10);
+        }
+      }
+      return 0; // throws error;
+    };
+
     Alert.alert(
       'Report event category: ' + description,
       null,
@@ -29,6 +40,7 @@ class RadialMenuComponent extends React.Component {
               longitude: this.props.region.longitude,
               userId: this.props.userId,
               event,
+              categoryId: getCategoryId(key),
               description,
             };
             this.handleReport(newEvent);

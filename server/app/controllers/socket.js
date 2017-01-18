@@ -36,6 +36,7 @@ module.exports = (io) => {
       socket.on('reportNotification', (notification) => {
         // server finds room names
         // foreach  room name send notifications to client
+        console.log(notification, 'this is the notification from the client');
         insertNotification(notification)
         .then((userIds, newNotification) => {
           userIds.forEach((userId) => {
